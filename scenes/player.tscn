@@ -1,4 +1,4 @@
-[gd_scene load_steps=112 format=3 uid="uid://dhqewwrxv0v3b"]
+[gd_scene load_steps=117 format=3 uid="uid://dhqewwrxv0v3b"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_cx51x"]
 [ext_resource type="Texture2D" uid="uid://dao5fdrobn538" path="res://assets/temp-player-sprite/FREE_Adventurer 2D Pixel Art/Sprites/IDLE/idle_down.png" id="2_761f4"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dg3y6s4wbvf13" path="res://assets/temp-player-sprite/FREE_Adventurer 2D Pixel Art/Sprites/RUN/run_left.png" id="7_knwqa"]
 [ext_resource type="Texture2D" uid="uid://ccpscpwq1o1ig" path="res://assets/temp-player-sprite/FREE_Adventurer 2D Pixel Art/Sprites/RUN/run_right.png" id="8_qvqbm"]
 [ext_resource type="Texture2D" uid="uid://3syj0ho0qheg" path="res://assets/temp-player-sprite/FREE_Adventurer 2D Pixel Art/Sprites/RUN/run_up.png" id="9_vjqd2"]
+[ext_resource type="Texture2D" uid="uid://bp34hlfv3b3dr" path="res://assets/light.png" id="14_a62mi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jgql2"]
 atlas = ExtResource("2_q0ko4")
@@ -752,13 +753,26 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a7b3w"]
 size = Vector2(13, 34)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sbu2e"]
+size = Vector2(41, 34.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_832x4"]
+size = Vector2(41, 33)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hh4jr"]
+size = Vector2(40, 33)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vi6nt"]
+size = Vector2(45.5, 33.5)
+
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_cx51x")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+light_mask = 2
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_orl8x")
-animation = &"attack1down"
+animation = &"attack1left"
 frame = 7
 frame_progress = 1.0
 
@@ -773,4 +787,44 @@ zoom = Vector2(2.5, 2.5)
 wait_time = 0.8
 one_shot = true
 
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(0.25, 0.25)
+range_item_cull_mask = 3
+texture = ExtResource("14_a62mi")
+
+[node name="startTime" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="attackareas" type="Node" parent="."]
+
+[node name="down" type="Area2D" parent="attackareas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attackareas/down"]
+position = Vector2(0.5, 15.75)
+shape = SubResource("RectangleShape2D_sbu2e")
+disabled = true
+
+[node name="up" type="Area2D" parent="attackareas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attackareas/up"]
+position = Vector2(0.5, -18.5)
+shape = SubResource("RectangleShape2D_832x4")
+disabled = true
+
+[node name="right" type="Area2D" parent="attackareas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attackareas/right"]
+position = Vector2(26, 1.5)
+shape = SubResource("RectangleShape2D_hh4jr")
+disabled = true
+
+[node name="left" type="Area2D" parent="attackareas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attackareas/left"]
+position = Vector2(-20.25, 1.75)
+shape = SubResource("RectangleShape2D_vi6nt")
+disabled = true
+
 [connection signal="timeout" from="attack1time" to="." method="_on_attack_1_time_timeout"]
+[connection signal="timeout" from="startTime" to="." method="_on_start_time_timeout"]

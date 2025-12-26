@@ -2,10 +2,13 @@ extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var attack_1_time: Timer = $attack1time
-
+@onready var camera_2d: Camera2D = $Camera2D
+var botlim = 10000000000
 var SPEED := 300.0
 var animdir := 2 # animation direction
 var attacking = false
+func _ready() -> void:
+	$startTime.start()
 func _physics_process(delta: float) -> void:
 	# reset velocity each frame
 	velocity = Vector2.ZERO
@@ -17,12 +20,16 @@ func _physics_process(delta: float) -> void:
 		match animdir:
 			0: 
 				animated_sprite_2d.play("attack1up")
+				$attackareas/up/CollisionShape2D.disabled = false
 			1:
 				animated_sprite_2d.play("attack1right")
+				$attackareas/right/CollisionShape2D.disabled = false
 			2:
 				animated_sprite_2d.play("attack1down")
+				$attackareas/down/CollisionShape2D.disabled = false
 			3:
 				animated_sprite_2d.play("attack1left")
+				$attackareas/left/CollisionShape2D.disabled = false
 		
 	if Input.is_action_pressed("up"):
 		velocity.y = -SPEED
@@ -60,5 +67,12 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_attack_1_time_timeout() -> void:
+	$attackareas/down/CollisionShape2D.disabled = true
+	$attackareas/up/CollisionShape2D.disabled = true
+	$attackareas/right/CollisionShape2D.disabled = true
+	$attackareas/left/CollisionShape2D.disabled = true
 	SPEED *= 1.5
 	attacking = false
+
+func _on_start_time_timeout() -> void:
+	camera_2d.limit_bottom = botlim
