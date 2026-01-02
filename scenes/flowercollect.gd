@@ -1,13 +1,16 @@
-extends Node2D
-@onready var player: CharacterBody2D = $player
-@onready var textbox: CanvasLayer = $Textbox
+extends Area2D
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	player.botlim = 100
-	textbox.queue_text("meow")
+	pass # Replace with function body.
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func _on_body_entered(body: CharacterBody2D) -> void:
+	if body.name == "player":
+		queue_free()
+		Global.flowersCollected+=1

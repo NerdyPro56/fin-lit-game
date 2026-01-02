@@ -1,0 +1,110 @@
+[gd_scene load_steps=6 format=3 uid="uid://dvx6tkdp4r0lg"]
+
+[ext_resource type="Script" path="res://scripts/textbox.gd" id="1_8l2tr"]
+[ext_resource type="FontFile" uid="uid://cvev2brwlnlrr" path="res://Adventurer.ttf" id="1_of1of"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hqag3"]
+bg_color = Color(0.293428, 0.1945, 0.12206, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dcipk"]
+font = ExtResource("1_of1of")
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_g2g1n"]
+font = ExtResource("1_of1of")
+font_size = 48
+
+[node name="Textbox" type="CanvasLayer"]
+script = ExtResource("1_8l2tr")
+
+[node name="TextboxContainer" type="MarginContainer" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 135.0
+offset_top = -170.0
+offset_right = 135.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.8, 0.8)
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = -40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 67
+
+[node name="Panel" type="Panel" parent="TextboxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hqag3")
+
+[node name="MarginContainer" type="MarginContainer" parent="TextboxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Panel" type="Panel" parent="TextboxContainer/MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextboxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Start" type="Label" parent="TextboxContainer/MarginContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 0
+text = "*"
+label_settings = SubResource("LabelSettings_dcipk")
+
+[node name="Label2" type="Label" parent="TextboxContainer/MarginContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Text"
+label_settings = SubResource("LabelSettings_dcipk")
+autowrap_mode = 3
+clip_text = true
+
+[node name="End" type="Label" parent="TextboxContainer/MarginContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 8
+text = "v"
+label_settings = SubResource("LabelSettings_dcipk")
+
+[node name="RevealTimer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="EndTimer" type="Timer" parent="."]
+wait_time = 15.0
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 298.0
+offset_top = -48.0
+offset_right = 298.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "E or enter to continue"
+label_settings = SubResource("LabelSettings_g2g1n")
+vertical_alignment = 2
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="RevealTimer" to="." method="_on_RevealTimer_timeout"]
+[connection signal="timeout" from="EndTimer" to="." method="_on_end_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
