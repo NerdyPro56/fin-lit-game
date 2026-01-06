@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var attack_1_time: Timer = $attack1time
 @onready var camera_2d: Camera2D = $Camera2D
 var botlim = 10000000000
-var SPEED := 300.0
+var SPEED := 250.0
 var animdir := 2 # animation direction
 var attacking = false
 func _ready() -> void:
