@@ -16,7 +16,7 @@ texture = ExtResource("1_v43bi")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 scale = Vector2(0.2, 0.2)
-energy = 1.5
+energy = 1.07
 texture = ExtResource("2_tae6i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

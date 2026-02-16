@@ -754,16 +754,16 @@ animations = [{
 size = Vector2(10, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sbu2e"]
-size = Vector2(41, 34.5)
+size = Vector2(49, 31.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_832x4"]
-size = Vector2(41, 33)
+size = Vector2(41, 23)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hh4jr"]
-size = Vector2(40, 33)
+size = Vector2(39, 27)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vi6nt"]
-size = Vector2(45.5, 33.5)
+size = Vector2(44, 25.5)
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_cx51x")
@@ -772,7 +772,7 @@ script = ExtResource("1_cx51x")
 light_mask = 2
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_orl8x")
-animation = &"attack1left"
+animation = &"attack1up"
 frame = 7
 frame_progress = 1.0
 
@@ -784,7 +784,7 @@ shape = SubResource("RectangleShape2D_a7b3w")
 zoom = Vector2(2.5, 2.5)
 
 [node name="attack1time" type="Timer" parent="."]
-wait_time = 0.8
+wait_time = 0.6
 one_shot = true
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
@@ -796,35 +796,42 @@ texture = ExtResource("14_a62mi")
 wait_time = 0.1
 one_shot = true
 
-[node name="attackareas" type="Node" parent="."]
+[node name="down" type="Area2D" parent="."]
 
-[node name="down" type="Area2D" parent="attackareas"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="attackareas/down"]
-position = Vector2(0.5, 15.75)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="down"]
+position = Vector2(-3.5, 14.25)
 shape = SubResource("RectangleShape2D_sbu2e")
 disabled = true
 
-[node name="up" type="Area2D" parent="attackareas"]
+[node name="up" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="attackareas/up"]
-position = Vector2(0.5, -18.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="up"]
+position = Vector2(0.5, -13.5)
 shape = SubResource("RectangleShape2D_832x4")
 disabled = true
 
-[node name="right" type="Area2D" parent="attackareas"]
+[node name="right" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="attackareas/right"]
-position = Vector2(26, 1.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="right"]
+position = Vector2(18.5, -1.5)
 shape = SubResource("RectangleShape2D_hh4jr")
 disabled = true
 
-[node name="left" type="Area2D" parent="attackareas"]
+[node name="left" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="attackareas/left"]
-position = Vector2(-20.25, 1.75)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="left"]
+position = Vector2(-18, 5.75)
 shape = SubResource("RectangleShape2D_vi6nt")
 disabled = true
 
+[node name="stronk" type="Timer" parent="."]
+wait_time = 0.6
+one_shot = true
+
 [connection signal="timeout" from="attack1time" to="." method="_on_attack_1_time_timeout"]
 [connection signal="timeout" from="startTime" to="." method="_on_start_time_timeout"]
+[connection signal="body_entered" from="down" to="." method="_on_down_body_entered"]
+[connection signal="body_entered" from="up" to="." method="_on_up_body_entered"]
+[connection signal="body_entered" from="right" to="." method="_on_right_body_entered"]
+[connection signal="body_entered" from="left" to="." method="_on_left_body_entered"]
+[connection signal="timeout" from="stronk" to="." method="_on_stronk_timeout"]
