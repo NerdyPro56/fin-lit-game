@@ -20,6 +20,7 @@ func _ready() -> void:
 	if get_tree().current_scene.name == "town":
 		$Camera2D.zoom.x = 3
 		$Camera2D.zoom.y = 3
+		SPEED /= 1.4
 		$PointLight2D.energy = 0
 		animated_sprite_2d.light_mask = 1
 func _physics_process(delta: float) -> void:
