@@ -1,0 +1,118 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2djstt1flo2r"]
+
+[ext_resource type="Script" path="res://scripts/ranch_handler.gd" id="1_5wrg6"]
+
+[node name="ShopHandler" type="Node2D"]
+position = Vector2(197, 8)
+scale = Vector2(0.7, 0.7)
+script = ExtResource("1_5wrg6")
+
+[node name="TestShopUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Purchases" type="GridContainer" parent="TestShopUI"]
+layout_mode = 0
+offset_left = 348.571
+offset_top = 167.143
+offset_right = 937.568
+offset_bottom = 487.143
+
+[node name="deposit" type="Button" parent="TestShopUI/Purchases"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Deposit"
+
+[node name="withdraw" type="Button" parent="TestShopUI/Purchases"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Withdraw"
+
+[node name="loan" type="Button" parent="TestShopUI/Purchases"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Loan money"
+
+[node name="fruits2" type="Button" parent="TestShopUI/Purchases"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Invest"
+
+[node name="Debug" type="GridContainer" parent="TestShopUI"]
+visible = false
+layout_mode = 0
+offset_left = 864.0
+offset_top = 1.0
+offset_right = 1148.0
+offset_bottom = 78.0
+
+[node name="giveMoneyPlz" type="Button" parent="TestShopUI/Debug"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "give money"
+
+[node name="Cost" type="GridContainer" parent="TestShopUI"]
+visible = false
+layout_mode = 0
+offset_left = 1100.0
+offset_top = 8.0
+offset_right = 1271.0
+offset_bottom = 223.0
+
+[node name="boat" type="Label" parent="TestShopUI/Cost"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "500+20"
+
+[node name="carriage" type="Label" parent="TestShopUI/Cost"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "200+10"
+
+[node name="fruits" type="Label" parent="TestShopUI/Cost"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "20
+"
+
+[node name="amountlabel" type="Label" parent="TestShopUI"]
+layout_mode = 0
+offset_left = -351.429
+offset_top = 5.71429
+offset_right = -76.4286
+offset_bottom = 28.7143
+scale = Vector2(2, 2)
+text = "Current amount in bank:"
+
+[node name="amount" type="Label" parent="TestShopUI"]
+layout_mode = 0
+offset_left = -342.857
+offset_top = 64.2857
+offset_right = -67.8571
+offset_bottom = 87.2857
+scale = Vector2(2, 2)
+
+[node name="loanamount" type="Label" parent="TestShopUI"]
+layout_mode = 0
+offset_left = 775.714
+offset_top = 8.57143
+offset_right = 1050.71
+offset_bottom = 31.5714
+scale = Vector2(2, 2)
+text = "Amount owed:"
+
+[node name="loannum" type="Label" parent="TestShopUI"]
+layout_mode = 0
+offset_left = 784.286
+offset_top = 67.1429
+offset_right = 1059.29
+offset_bottom = 90.1429
+scale = Vector2(2, 2)
+
+[connection signal="pressed" from="TestShopUI/Purchases/deposit" to="." method="_on_health_pressed"]
+[connection signal="pressed" from="TestShopUI/Purchases/withdraw" to="." method="_on_damage_pressed"]
+[connection signal="pressed" from="TestShopUI/Purchases/loan" to="." method="_on_speed_pressed"]
+[connection signal="pressed" from="TestShopUI/Purchases/fruits2" to="." method="_on_speed_pressed"]
+[connection signal="pressed" from="TestShopUI/Debug/giveMoneyPlz" to="." method="_on_give_money_plz_pressed"]

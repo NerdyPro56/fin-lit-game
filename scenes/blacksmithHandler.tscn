@@ -1,0 +1,77 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7wewl6wbcysp"]
+
+[ext_resource type="Script" path="res://scripts/ranch_handler.gd" id="1_nae4f"]
+
+[node name="ShopHandler" type="Node2D"]
+position = Vector2(197, 8)
+scale = Vector2(0.7, 0.7)
+script = ExtResource("1_nae4f")
+
+[node name="TestShopUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Purchases" type="GridContainer" parent="TestShopUI"]
+layout_mode = 0
+offset_left = 657.143
+offset_top = -2.85714
+offset_right = 1246.14
+offset_bottom = 236.143
+
+[node name="boat" type="Button" parent="TestShopUI/Purchases"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Loan a Boat"
+
+[node name="carriage" type="Button" parent="TestShopUI/Purchases"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Loan a Horse"
+
+[node name="fruits" type="Button" parent="TestShopUI/Purchases"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Buy healing fruits"
+
+[node name="Debug" type="GridContainer" parent="TestShopUI"]
+visible = false
+layout_mode = 0
+offset_left = 864.0
+offset_top = 1.0
+offset_right = 1148.0
+offset_bottom = 78.0
+
+[node name="giveMoneyPlz" type="Button" parent="TestShopUI/Debug"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "give money"
+
+[node name="Cost" type="GridContainer" parent="TestShopUI"]
+layout_mode = 0
+offset_left = 1100.0
+offset_top = 8.0
+offset_right = 1271.0
+offset_bottom = 223.0
+
+[node name="boat" type="Label" parent="TestShopUI/Cost"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "500+20"
+
+[node name="carriage" type="Label" parent="TestShopUI/Cost"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "200+10"
+
+[node name="fruits" type="Label" parent="TestShopUI/Cost"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "20
+"
+
+[connection signal="pressed" from="TestShopUI/Purchases/boat" to="." method="_on_health_pressed"]
+[connection signal="pressed" from="TestShopUI/Purchases/carriage" to="." method="_on_damage_pressed"]
+[connection signal="pressed" from="TestShopUI/Purchases/fruits" to="." method="_on_speed_pressed"]
+[connection signal="pressed" from="TestShopUI/Debug/giveMoneyPlz" to="." method="_on_give_money_plz_pressed"]

@@ -85,7 +85,7 @@ label_settings = SubResource("LabelSettings_dcipk")
 wait_time = 0.2
 
 [node name="EndTimer" type="Timer" parent="."]
-wait_time = 15.0
+wait_time = 30.0
 
 [node name="Label" type="Label" parent="."]
 anchors_preset = 12
