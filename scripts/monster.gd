@@ -37,11 +37,14 @@ func _ready():
 	player = get_parent().get_node("player") 
 
 func _physics_process(delta):
+	#if player.attacking and (global_position - player.global_position).length() < 15:
+		#hurt(20)
+		#print("EIEWOFWOIJEIJO")
 	if knockback_timer > 0:
 		velocity = knockback
 		knockback_timer -= delta
 		move_and_slide()
-	else:
+	elif !ouch:
 		if not player:
 			return 
 		if health <= 0 and !dead:
@@ -100,7 +103,7 @@ func perform_attack():
 func _on_AttackTimer_timeout():
 	state = ATTACK
 func hurt(x):
-	if !ouch and !immune:
+	#if !ouch and !immune:
 		$Timer.start()
 		immune = true
 		print("ow")

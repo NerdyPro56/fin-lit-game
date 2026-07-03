@@ -71,7 +71,17 @@ theme_override_font_sizes/font_size = 50
 text = "20
 "
 
+[node name="return" type="Button" parent="TestShopUI"]
+layout_mode = 0
+offset_left = -225.714
+offset_top = 37.1429
+offset_right = 206.286
+offset_bottom = 114.143
+theme_override_font_sizes/font_size = 50
+text = "Return"
+
 [connection signal="pressed" from="TestShopUI/Purchases/boat" to="." method="_on_health_pressed"]
 [connection signal="pressed" from="TestShopUI/Purchases/carriage" to="." method="_on_damage_pressed"]
 [connection signal="pressed" from="TestShopUI/Purchases/fruits" to="." method="_on_speed_pressed"]
 [connection signal="pressed" from="TestShopUI/Debug/giveMoneyPlz" to="." method="_on_give_money_plz_pressed"]
+[connection signal="pressed" from="TestShopUI/return" to="." method="_on_return_pressed"]

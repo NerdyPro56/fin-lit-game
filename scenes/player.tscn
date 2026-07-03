@@ -754,13 +754,13 @@ animations = [{
 size = Vector2(10, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sbu2e"]
-size = Vector2(49, 31.5)
+size = Vector2(49, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_832x4"]
-size = Vector2(41, 23)
+size = Vector2(41, 26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hh4jr"]
-size = Vector2(39, 27)
+size = Vector2(39, 31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vi6nt"]
 size = Vector2(44, 25.5)
@@ -799,21 +799,21 @@ one_shot = true
 [node name="down" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="down"]
-position = Vector2(-3.5, 14.25)
+position = Vector2(-3.5, 14)
 shape = SubResource("RectangleShape2D_sbu2e")
 disabled = true
 
 [node name="up" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="up"]
-position = Vector2(0.5, -13.5)
+position = Vector2(0.5, -12)
 shape = SubResource("RectangleShape2D_832x4")
 disabled = true
 
 [node name="right" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="right"]
-position = Vector2(18.5, -1.5)
+position = Vector2(18.5, -3.5)
 shape = SubResource("RectangleShape2D_hh4jr")
 disabled = true
 

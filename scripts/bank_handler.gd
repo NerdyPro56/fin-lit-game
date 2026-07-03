@@ -11,28 +11,34 @@ const priceIncrease := 20;
 
 var cost := [500,200,20] #index 0 = health / index 1 = damage / index 2 = speed
 
+func _on_deposit_pressed() -> void:
+	pass # Replace with function body.
+func _on_withdraw_pressed() -> void:
+	pass # Replace with function body.
+func _on_loan_pressed() -> void:
+	pass # Replace with function body.
 #Shop Button singals
 #it has to have a upgrade index and be in the cost array
-func _on_health_pressed() -> void:
-	var upgradeIndex := 0;
-	$TestShopUI/Purchases/boat.hide()
-	$TestShopUI/Cost/boat.hide()
-	if canPurchase(upgradeIndex):
-		sendToPlayer("health");
-	
-func _on_damage_pressed() -> void:
-	$TestShopUI/Purchases/carriage.hide()
-	$TestShopUI/Cost/carriage.hide()
-	var upgradeIndex := 1;
-	if canPurchase(upgradeIndex):
-		sendToPlayer("damage")
-
-func _on_speed_pressed() -> void:
-	$TestShopUI/Purchases/fruits.hide()
-	$TestShopUI/Cost/fruits.hide()
-	var upgradeIndex := 2;
-	if canPurchase(upgradeIndex):
-		sendToPlayer("speed");
+#func _on_health_pressed() -> void:
+	#var upgradeIndex := 0;
+	#$TestShopUI/Purchases/boat.hide()
+	#$TestShopUI/Cost/boat.hide()
+	#if canPurchase(upgradeIndex):
+		#sendToPlayer("health");
+	#
+#func _on_damage_pressed() -> void:
+	#$TestShopUI/Purchases/carriage.hide()
+	#$TestShopUI/Cost/carriage.hide()
+	#var upgradeIndex := 1;
+	#if canPurchase(upgradeIndex):
+		#sendToPlayer("damage")
+#
+#func _on_speed_pressed() -> void:
+	#$TestShopUI/Purchases/fruits.hide()
+	#$TestShopUI/Cost/fruits.hide()
+	#var upgradeIndex := 2;
+	#if canPurchase(upgradeIndex):
+		#sendToPlayer("speed");
 
 #checks if the player can afford the upgrade
 #if so it emits a signal to the player and it pays the amount
@@ -71,6 +77,10 @@ func _on_give_money_plz_pressed() -> void:
 
 
 func _on_return_pressed() -> void:
-	Global.xTownPos = 243
-	Global.yTownPos = 44
+	Global.xTownPos = 2
+	Global.yTownPos = -148
 	get_tree().change_scene_to_file("res://scenes/town.tscn")
+
+
+func _on_invest_pressed() -> void:
+	pass # Replace with function body.

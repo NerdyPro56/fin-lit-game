@@ -12,10 +12,10 @@ var ouch = false
 var e = true
 @onready var player = null
 var randomnum
-var health = 20
+var health = 40
 var dead = false
 @onready var die: Timer = $die
-@export var dmg: int = 5
+@export var dmg: int = 8
 enum {
 	SURROUND,
 	ATTACK,
@@ -58,7 +58,7 @@ func _physics_process(delta):
 					
 				ATTACK:
 					move(player.global_position, delta)
-					if (global_position - player.global_position).length() < 13:  # Adjust the distance threshold as needed
+					if (global_position - player.global_position).length() < 22:  # Adjust the distance threshold as needed
 						state = HIT
 				HIT:
 					perform_attack()

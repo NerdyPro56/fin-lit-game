@@ -71,6 +71,6 @@ func _on_give_money_plz_pressed() -> void:
 
 
 func _on_return_pressed() -> void:
-	Global.xTownPos = 243
-	Global.yTownPos = 44
+	Global.xTownPos = -142
+	Global.yTownPos = 25
 	get_tree().change_scene_to_file("res://scenes/town.tscn")

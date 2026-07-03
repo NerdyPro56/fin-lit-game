@@ -94,10 +94,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sqckg"]
-size = Vector2(8.33333, 10.6667)
+size = Vector2(9, 15.3333)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1mgtq"]
-size = Vector2(11.6667, 21.8333)
+size = Vector2(11.1667, 20)
 
 [node name="Monster" type="CharacterBody2D"]
 scale = Vector2(1.5, 1.5)
@@ -113,7 +113,7 @@ animation = &"chase"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.833333, 3.33333)
+position = Vector2(0.499999, 1.00001)
 shape = SubResource("RectangleShape2D_sqckg")
 
 [node name="AttackTimer" type="Timer" parent="."]
@@ -127,7 +127,7 @@ one_shot = true
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0.666667, 0.666667)
+position = Vector2(0.416658, 0.666666)
 shape = SubResource("RectangleShape2D_1mgtq")
 
 [node name="Timer" type="Timer" parent="."]

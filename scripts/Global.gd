@@ -9,3 +9,6 @@ var hasFruits = false
 var blacksmithTimes = 0
 var ranchTimes = 0
 var bankTimes = 0
+
+var xTownPos = -20
+var yTownPos = 420
