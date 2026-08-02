@@ -1,0 +1,141 @@
+[gd_scene load_steps=24 format=3 uid="uid://ksdue4enw281"]
+
+[ext_resource type="Script" path="res://scripts/monster.gd" id="1_ufhik"]
+[ext_resource type="AudioStream" uid="uid://bmagcimibjuek" path="res://assets/Minifantasy_Dungeon_SFX/07_human_atk_sword_2.wav" id="2_as2c1"]
+[ext_resource type="Texture2D" uid="uid://bfk1uxm70inga" path="res://assets/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/chort_run_anim_f0.png" id="3_ctl5h"]
+[ext_resource type="Texture2D" uid="uid://dmcoxe2ocqech" path="res://assets/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/chort_run_anim_f1.png" id="4_o7gju"]
+[ext_resource type="Texture2D" uid="uid://dqkx65835vvah" path="res://assets/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/chort_run_anim_f2.png" id="5_5ysb5"]
+[ext_resource type="Texture2D" uid="uid://b8hw8xs2d0iwo" path="res://assets/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/chort_run_anim_f3.png" id="6_w7iv5"]
+[ext_resource type="Texture2D" uid="uid://wqwvibcb8wvw" path="res://assets/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/chort_idle_anim_f0.png" id="7_1p535"]
+[ext_resource type="Texture2D" uid="uid://r67jj5x84dkp" path="res://assets/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/skull.png" id="7_pftjw"]
+[ext_resource type="Texture2D" uid="uid://dce3wjkead7tv" path="res://assets/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/chort_idle_anim_f1.png" id="8_iwrfe"]
+[ext_resource type="Texture2D" uid="uid://dui1iaw05yyn" path="res://assets/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/chort_idle_anim_f2.png" id="9_afxip"]
+[ext_resource type="Texture2D" uid="uid://cxo15vo1ojon7" path="res://assets/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/chort_idle_anim_f3.png" id="10_35uvu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2oiv"]
+atlas = ExtResource("3_ctl5h")
+region = Rect2(0, 0, 16, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_br4ms"]
+atlas = ExtResource("4_o7gju")
+region = Rect2(0, 0, 16, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dlacr"]
+atlas = ExtResource("5_5ysb5")
+region = Rect2(0, 0, 16, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gv8hq"]
+atlas = ExtResource("6_w7iv5")
+region = Rect2(0, 0, 16, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7la04"]
+atlas = ExtResource("7_pftjw")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gqm0"]
+atlas = ExtResource("7_1p535")
+region = Rect2(0, 0, 16, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2acy1"]
+atlas = ExtResource("8_iwrfe")
+region = Rect2(0, 0, 16, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bww0b"]
+atlas = ExtResource("9_afxip")
+region = Rect2(0, 0, 16, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhp8l"]
+atlas = ExtResource("10_35uvu")
+region = Rect2(0, 0, 16, 23)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rsmof"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2oiv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_br4ms")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dlacr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gv8hq")
+}],
+"loop": true,
+"name": &"chase",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7la04")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gqm0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2acy1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bww0b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jhp8l")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sqckg"]
+size = Vector2(9, 15.3333)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1mgtq"]
+size = Vector2(11.1667, 20)
+
+[node name="Monster" type="CharacterBody2D"]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_ufhik")
+
+[node name="07HumanAtkSword2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_as2c1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_rsmof")
+animation = &"chase"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.499999, 1.00001)
+shape = SubResource("RectangleShape2D_sqckg")
+
+[node name="AttackTimer" type="Timer" parent="."]
+
+[node name="hurty" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="die" type="Timer" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.416658, 0.666666)
+shape = SubResource("RectangleShape2D_1mgtq")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.6
+one_shot = true
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]
+[connection signal="timeout" from="hurty" to="." method="_on_hurty_timeout"]
+[connection signal="timeout" from="die" to="." method="_on_die_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
