@@ -1,0 +1,71 @@
+[gd_scene load_steps=2 format=3 uid="uid://ng0nj54juc5j"]
+
+[ext_resource type="Script" path="res://scripts/shopHandler.gd" id="1_glv2v"]
+
+[node name="ShopHandler" type="Node2D"]
+script = ExtResource("1_glv2v")
+
+[node name="TestShopUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Purchases" type="GridContainer" parent="TestShopUI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Health" type="Button" parent="TestShopUI/Purchases"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Increase health"
+
+[node name="Damage" type="Button" parent="TestShopUI/Purchases"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Increase damage"
+
+[node name="Speed" type="Button" parent="TestShopUI/Purchases"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Increase speed"
+
+[node name="Debug" type="GridContainer" parent="TestShopUI"]
+layout_mode = 0
+offset_left = 864.0
+offset_top = 1.0
+offset_right = 1148.0
+offset_bottom = 78.0
+
+[node name="giveMoneyPlz" type="Button" parent="TestShopUI/Debug"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "give money"
+
+[node name="Cost" type="GridContainer" parent="TestShopUI"]
+layout_mode = 0
+offset_left = 432.0
+offset_top = 8.0
+offset_right = 489.0
+offset_bottom = 223.0
+
+[node name="Health" type="Label" parent="TestShopUI/Cost"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "10"
+
+[node name="Damage" type="Label" parent="TestShopUI/Cost"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "10"
+
+[node name="Speed" type="Label" parent="TestShopUI/Cost"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "10"
+
+[connection signal="pressed" from="TestShopUI/Purchases/Health" to="." method="_on_health_pressed"]
+[connection signal="pressed" from="TestShopUI/Purchases/Damage" to="." method="_on_damage_pressed"]
+[connection signal="pressed" from="TestShopUI/Purchases/Speed" to="." method="_on_speed_pressed"]
+[connection signal="pressed" from="TestShopUI/Debug/giveMoneyPlz" to="." method="_on_give_money_plz_pressed"]

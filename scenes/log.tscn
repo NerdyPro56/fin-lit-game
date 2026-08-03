@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://7rlkn4r1hnmm"]
+
+[ext_resource type="Texture2D" uid="uid://k53nfuiyvnoc" path="res://assets/temp-tilemap/19.07a - Gentle Forest 3.0a ($0 palettes)/gentle sheets/gentle forest v01.png" id="1_6wgkt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_68f53"]
+size = Vector2(30, 47)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6p5rf"]
+size = Vector2(31, 47)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_6wgkt")
+region_enabled = true
+region_rect = Rect2(96.2246, 0.0510302, 31.8237, 48.109)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_68f53")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_6p5rf")

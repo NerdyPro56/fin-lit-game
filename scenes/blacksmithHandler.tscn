@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://b7wewl6wbcysp"]
+
+[ext_resource type="Script" uid="uid://dy1a4wmphg4qd" path="res://scripts/blacksmith_handler.gd" id="1_x47f7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_eikia"]
+font_size = 36
+
+[node name="ShopHandler" type="Node2D" unique_id=759659422]
+position = Vector2(197, 8)
+scale = Vector2(0.7, 0.7)
+script = ExtResource("1_x47f7")
+
+[node name="Label" type="Label" parent="." unique_id=378442547]
+offset_left = -240.0
+offset_top = 108.571
+offset_right = 252.0
+offset_bottom = 158.571
+text = "Amount of money in pocket:"
+label_settings = SubResource("LabelSettings_eikia")
+
+[node name="TestShopUI" type="Control" parent="." unique_id=776536807]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="return" type="Button" parent="TestShopUI" unique_id=1450932558]
+layout_mode = 0
+offset_left = -244.286
+offset_top = 8.57143
+offset_right = 187.714
+offset_bottom = 85.5715
+theme_override_font_sizes/font_size = 50
+text = "Return"
+
+[node name="Purchases" type="GridContainer" parent="TestShopUI" unique_id=2056856602]
+layout_mode = 0
+offset_left = 657.143
+offset_top = -2.85714
+offset_right = 1246.14
+offset_bottom = 236.143
+
+[node name="boat" type="Button" parent="TestShopUI/Purchases" unique_id=2019272945]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Loan a Boat"
+
+[node name="carriage" type="Button" parent="TestShopUI/Purchases" unique_id=330566842]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Loan a Horse"
+
+[node name="fruits" type="Button" parent="TestShopUI/Purchases" unique_id=2114174676]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Buy healing fruits"
+
+[node name="Debug" type="GridContainer" parent="TestShopUI" unique_id=1700138642]
+visible = false
+layout_mode = 0
+offset_left = 864.0
+offset_top = 1.0
+offset_right = 1148.0
+offset_bottom = 78.0
+
+[node name="giveMoneyPlz" type="Button" parent="TestShopUI/Debug" unique_id=110492235]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "give money"
+
+[node name="Cost" type="GridContainer" parent="TestShopUI" unique_id=266532944]
+layout_mode = 0
+offset_left = 1100.0
+offset_top = 8.0
+offset_right = 1271.0
+offset_bottom = 223.0
+
+[node name="boat" type="Label" parent="TestShopUI/Cost" unique_id=1136264156]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "500+20"
+
+[node name="carriage" type="Label" parent="TestShopUI/Cost" unique_id=1376585953]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "200+10"
+
+[node name="fruits" type="Label" parent="TestShopUI/Cost" unique_id=1623673259]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "20
+"
+
+[connection signal="pressed" from="TestShopUI/return" to="." method="_on_return_pressed"]
+[connection signal="pressed" from="TestShopUI/Purchases/boat" to="." method="_on_health_pressed"]
+[connection signal="pressed" from="TestShopUI/Purchases/carriage" to="." method="_on_damage_pressed"]
+[connection signal="pressed" from="TestShopUI/Purchases/fruits" to="." method="_on_speed_pressed"]
+[connection signal="pressed" from="TestShopUI/Debug/giveMoneyPlz" to="." method="_on_give_money_plz_pressed"]
