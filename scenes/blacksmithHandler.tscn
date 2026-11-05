@@ -39,13 +39,15 @@ offset_left = 657.143
 offset_top = -2.85714
 offset_right = 1246.14
 offset_bottom = 236.143
+theme_override_constants/v_separation = 50
 
 [node name="boat" type="Button" parent="TestShopUI/Purchases" unique_id=2019272945]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "Loan a Boat"
+text = "Upgrade Sword"
 
 [node name="carriage" type="Button" parent="TestShopUI/Purchases" unique_id=330566842]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Loan a Horse"
@@ -55,32 +57,21 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Buy healing fruits"
 
-[node name="Debug" type="GridContainer" parent="TestShopUI" unique_id=1700138642]
-visible = false
-layout_mode = 0
-offset_left = 864.0
-offset_top = 1.0
-offset_right = 1148.0
-offset_bottom = 78.0
-
-[node name="giveMoneyPlz" type="Button" parent="TestShopUI/Debug" unique_id=110492235]
-layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "give money"
-
 [node name="Cost" type="GridContainer" parent="TestShopUI" unique_id=266532944]
 layout_mode = 0
 offset_left = 1100.0
 offset_top = 8.0
 offset_right = 1271.0
 offset_bottom = 223.0
+theme_override_constants/v_separation = 50
 
 [node name="boat" type="Label" parent="TestShopUI/Cost" unique_id=1136264156]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "500+20"
+text = "200"
 
 [node name="carriage" type="Label" parent="TestShopUI/Cost" unique_id=1376585953]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "200+10"
@@ -91,8 +82,28 @@ theme_override_font_sizes/font_size = 50
 text = "20
 "
 
+[node name="LineEdit2" type="LineEdit" parent="." unique_id=2013591752]
+visible = false
+offset_left = 152.85716
+offset_top = 394.2857
+offset_right = 825.8572
+offset_bottom = 551.2857
+theme_override_font_sizes/font_size = 36
+placeholder_text = "Enter answer here"
+alignment = 1
+virtual_keyboard_type = 2
+
+[node name="Button" type="Button" parent="." unique_id=617816068]
+visible = false
+offset_left = 691.4286
+offset_top = 488.5714
+offset_right = 809.4286
+offset_bottom = 541.5714
+theme_override_font_sizes/font_size = 32
+text = "Submit"
+
 [connection signal="pressed" from="TestShopUI/return" to="." method="_on_return_pressed"]
 [connection signal="pressed" from="TestShopUI/Purchases/boat" to="." method="_on_health_pressed"]
 [connection signal="pressed" from="TestShopUI/Purchases/carriage" to="." method="_on_damage_pressed"]
 [connection signal="pressed" from="TestShopUI/Purchases/fruits" to="." method="_on_speed_pressed"]
-[connection signal="pressed" from="TestShopUI/Debug/giveMoneyPlz" to="." method="_on_give_money_plz_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

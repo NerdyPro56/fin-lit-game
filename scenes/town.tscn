@@ -4540,10 +4540,11 @@ virtual_keyboard_type = 2
 
 [node name="Button" type="Button" parent="Textbox" unique_id=814116869]
 visible = false
-offset_left = 769.0
-offset_top = 194.0
-offset_right = 832.0
-offset_bottom = 225.0
+offset_left = 734.0
+offset_top = 162.0
+offset_right = 797.0
+offset_bottom = 193.0
+scale = Vector2(2, 2)
 text = "Submit"
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1971762676]

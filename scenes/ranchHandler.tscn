@@ -18,23 +18,21 @@ offset_bottom = 40.0
 
 [node name="Purchases" type="GridContainer" parent="TestShopUI" unique_id=1738540387]
 layout_mode = 0
-offset_left = 657.143
-offset_top = -2.85714
-offset_right = 1246.14
-offset_bottom = 236.143
+offset_left = 662.8571
+offset_top = 39.999996
+offset_right = 1251.8541
+offset_bottom = 279.00015
+theme_override_constants/v_separation = 50
 
 [node name="boat" type="Button" parent="TestShopUI/Purchases" unique_id=2006600350]
 layout_mode = 2
+tooltip_text = "Access new areas"
 theme_override_font_sizes/font_size = 50
 text = "Loan a Boat"
 
-[node name="carriage" type="Button" parent="TestShopUI/Purchases" unique_id=1839907943]
-layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "Loan a Horse"
-
 [node name="fruits" type="Button" parent="TestShopUI/Purchases" unique_id=1375126762]
 layout_mode = 2
+tooltip_text = "Increases HP by 20"
 theme_override_font_sizes/font_size = 50
 text = "Buy healing fruits"
 
@@ -53,25 +51,21 @@ text = "give money"
 
 [node name="Cost" type="GridContainer" parent="TestShopUI" unique_id=99013759]
 layout_mode = 0
-offset_left = 1100.0
-offset_top = 8.0
-offset_right = 1271.0
-offset_bottom = 223.0
+offset_left = 1107.1428
+offset_top = 48.571426
+offset_right = 1278.1428
+offset_bottom = 308.5714
+theme_override_constants/v_separation = 50
 
 [node name="boat" type="Label" parent="TestShopUI/Cost" unique_id=1845034185]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "500+20"
-
-[node name="carriage" type="Label" parent="TestShopUI/Cost" unique_id=832029830]
-layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "200+10"
+text = "500"
 
 [node name="fruits" type="Label" parent="TestShopUI/Cost" unique_id=708290240]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "20
+text = "100
 "
 
 [node name="return" type="Button" parent="TestShopUI" unique_id=668697238]
@@ -91,8 +85,28 @@ offset_bottom = 158.571
 text = "Amount of money in pocket:"
 label_settings = SubResource("LabelSettings_tjryo")
 
+[node name="LineEdit2" type="LineEdit" parent="." unique_id=87633886]
+visible = false
+offset_left = 152.85716
+offset_top = 394.2857
+offset_right = 825.8572
+offset_bottom = 551.2857
+theme_override_font_sizes/font_size = 36
+placeholder_text = "Enter answer here"
+alignment = 1
+virtual_keyboard_type = 2
+
+[node name="Button" type="Button" parent="." unique_id=1652681845]
+visible = false
+offset_left = 691.4286
+offset_top = 488.5714
+offset_right = 809.4286
+offset_bottom = 541.5714
+theme_override_font_sizes/font_size = 32
+text = "Submit"
+
 [connection signal="pressed" from="TestShopUI/Purchases/boat" to="." method="_on_health_pressed"]
-[connection signal="pressed" from="TestShopUI/Purchases/carriage" to="." method="_on_damage_pressed"]
 [connection signal="pressed" from="TestShopUI/Purchases/fruits" to="." method="_on_speed_pressed"]
 [connection signal="pressed" from="TestShopUI/Debug/giveMoneyPlz" to="." method="_on_give_money_plz_pressed"]
 [connection signal="pressed" from="TestShopUI/return" to="." method="_on_return_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

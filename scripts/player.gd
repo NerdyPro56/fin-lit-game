@@ -21,6 +21,11 @@ var currentHealth: int = maxHealth
 var knockback = Vector2.ZERO
 var knockback_timer = 0.0
 func _ready() -> void:
+	if Global.hasBoat and Global.boatDebt > 0:
+		Global.money -= 50
+		Global.boatDebt -= 50
+	maxHealth = Global.health
+	currentHealth = Global.health
 	$startTime.start()
 	if get_tree().current_scene.name == "town":
 		$Camera2D.zoom.x = 3

@@ -266,7 +266,6 @@ tile_set = SubResource("TileSet_os8d4")
 position = Vector2(664, -64)
 
 [node name="Textbox" parent="." unique_id=1090659163 instance=ExtResource("2_os8d4")]
-visible = false
 
 [node name="Label2" type="Label" parent="Textbox" unique_id=1485330973]
 offset_left = 23.0
@@ -278,7 +277,6 @@ theme_override_font_sizes/font_size = 24
 text = "Slay 20 Monsters! (this message will go away when you complete it)"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=2134394825]
-visible = false
 color = Color(0.16625294, 0.12470987, 0.079696275, 1)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=117312321]

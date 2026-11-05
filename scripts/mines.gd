@@ -16,6 +16,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if (Global.killed >= 20) and !completed:
 		completed = true
+		$Textbox/Label2.text = "Well done! You can now claim your reward at the town!\nContinue slaying monsters for overtime payment!"
 		print("Change textbox")
 
 

@@ -5,13 +5,12 @@ extends Node2D
 var inside = false
 @onready var ilikecats: Sprite2D = $Area2D4/ilikecats
 @onready var textbox: CanvasLayer = $Textbox
-var done1 = false
 @onready var line_edit_2: LineEdit = $Textbox/LineEdit2
 var result1
 var done2 = false
 var done3 =  false
 var cave = false
-
+var done67 = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player.set_position(Vector2(Global.xTownPos, Global.yTownPos))
@@ -22,17 +21,18 @@ func _process(delta: float) -> void:
 		#switch scenes
 		if textbox.text_queue.size() == 0 and textbox.current_text == "":
 			textbox.queue_text("'(Sorry for the big sign!) This sign is pointed towards the wilderness. Enter at your own risk!'")
-	if textbox.text_queue.size() == 0 and done1 and !done2:
+	if textbox.text_queue.size() == 0 and Global.done1 and !done2 and done67:
 		done2 = true
 		$Textbox/LineEdit2.visible = true
 		$Textbox/Button.visible = true
-	if done1 and done2 and $Textbox/Button.visible == false and !done3:
+	if Global.done1 and done2 and $Textbox/Button.visible == false and !done3:
 		done3 = true
 		cave = true
 		if result1:
 			textbox.queue_text("GOOD JOB! I'll give you 100 coins for that correct answer. Now go out there (to your left) and slay those monsters! I'll pay you when you get back")
+			Global.money += 100
 		else:
-			textbox.queue_text("WRONG! It's 2000 gold for 40 hours! Now go out there (to your left) and slay those monsters! I'll pay you when you get back")
+			textbox.queue_text("WRONG! It's 1000 gold for 40 hours! Now go out there (to your left) and slay those monsters! I'll pay you when you get back")
 		Global.employed = true
 		$player.cutscene = false
 func _on_area_2d_4_body_entered(body: CharacterBody2D) -> void:
@@ -49,14 +49,27 @@ func _on_area_2d_4_body_exited(body: CharacterBody2D) -> void:
 
 
 func _on_area_2d_5_body_entered(body: CharacterBody2D) -> void:
-	if (body.name == "player") and !done1 and !Global.employed:
+	if (body.name == "player") and !Global.done1 and !Global.employed:
 		body.cutscene = true
-		done1 = true
+		Global.done1 = true
 		textbox.queue_text("OI! I'M OVER HERE! IN THE STAND! CAN'T YOU SEE ME?! I'M NOT SHORT ALRIGHT?!")
 		textbox.queue_text("So... You short on money or something kid?")
 		textbox.queue_text("Yes? Well you seem nice enough to be a good wage sla- I mean employee! I need someone to cleanup for my miners!")
-		textbox.queue_text("Let's say each monster takes you 2 hours to kill (I'm being generous here). And each hour I pay you 50")
+		textbox.queue_text("Let's say each monster takes you 2 hours to kill (I'm being generous here). And each hour I pay you 25")
 		textbox.queue_text("If I commissioned you to kill 20 monsters, how much am I paying you?")
+		done67 = true
+	if (body.name == "player") and Global.done1 and Global.killed < 20 and textbox.text_queue.size() == 0: 
+		textbox.queue_text("Come back when you've finished your job")
+	if (body.name == "player") and Global.done1 and Global.killed == 20:
+		Global.killed = 0
+		Global.money += 1000
+		textbox.queue_text("Alright! Here's your promised 1000 gold.")
+		textbox.queue_text("Come back when you've killed another 20 goblins. You can also kill more for overtime!")
+	if (body.name == "player") and Global.done1 and Global.killed > 20:
+		textbox.queue_text("Alright! Here's your promised 1000 gold with overtime included!")
+		textbox.queue_text("Come back when you've killed another 20 goblins.")
+		Global.killed = 0
+		Global.money += 2000 + (Global.killed - 20) * 25
 		
 func check_answer(txt, correct_answer):
 	var answer = txt
@@ -68,7 +81,7 @@ func check_answer(txt, correct_answer):
 
 
 func _on_button_pressed() -> void:
-	result1 = check_answer(line_edit_2.text, "2000")
+	result1 = check_answer(line_edit_2.text, "1000")
 	$Textbox/LineEdit2.visible = false
 	$Textbox/Button.visible = false
 	print(result1)
