@@ -4,10 +4,14 @@ var cutscene = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	textbox.queue_text("Welcome back!")
-	textbox.queue_text("Oh! You've gotten me a flower for monster protection? Thanks so much!")
-	textbox.queue_text("Here, take this key! I'm not sure where it leads but surly you'll make good use of it!")
-	textbox.queue_text("This one's on me but if you'd like to loan any transportation or keys let me know and I'll explain it to you!")
+	if Global.blackFirst:
+		Global.blackFirst = false
+		textbox.queue_text("Welcome back!")
+		textbox.queue_text("Oh! Got me a flower to protect against those nasty monsters? Appreciate it!")
+		textbox.queue_text("Oh? This key? You want it? Well you gotta pay for it!")
+		textbox.queue_text("There's no way I would've given it to you for free just cause of a stupid flower!")
+	else:
+		textbox.queue_text("Welcome back! Whatchu lookin for kid?")
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

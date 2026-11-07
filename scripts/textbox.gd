@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-const CHAR_READ_RATE = 0.05  # Delay between each character reveal
+const CHAR_READ_RATE = 0.03  # Delay between each character reveal
 
 @onready var textbox_container: MarginContainer = $TextboxContainer
 @onready var start_symbol: Label = $TextboxContainer/MarginContainer/HBoxContainer/Start

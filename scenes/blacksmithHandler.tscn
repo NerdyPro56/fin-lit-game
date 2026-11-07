@@ -35,10 +35,10 @@ text = "Return"
 
 [node name="Purchases" type="GridContainer" parent="TestShopUI" unique_id=2056856602]
 layout_mode = 0
-offset_left = 657.143
-offset_top = -2.85714
-offset_right = 1246.14
-offset_bottom = 236.143
+offset_left = 675.71423
+offset_top = -1.4285712
+offset_right = 1264.7112
+offset_bottom = 237.57158
 theme_override_constants/v_separation = 50
 
 [node name="boat" type="Button" parent="TestShopUI/Purchases" unique_id=2019272945]
@@ -55,7 +55,7 @@ text = "Loan a Horse"
 [node name="fruits" type="Button" parent="TestShopUI/Purchases" unique_id=2114174676]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "Buy healing fruits"
+text = "Buy strange key"
 
 [node name="Cost" type="GridContainer" parent="TestShopUI" unique_id=266532944]
 layout_mode = 0
@@ -79,8 +79,7 @@ text = "200+10"
 [node name="fruits" type="Label" parent="TestShopUI/Cost" unique_id=1623673259]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "20
-"
+text = "400"
 
 [node name="LineEdit2" type="LineEdit" parent="." unique_id=2013591752]
 visible = false

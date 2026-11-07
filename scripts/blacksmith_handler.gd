@@ -11,17 +11,21 @@ var cutscene = true
 const priceIncrease := 20;
 @onready var textbox: CanvasLayer = $"../Textbox"
 var result1
-var cost := [200,200,20] #index 0 = health / index 1 = damage / index 2 = speed
+var cost := [200,200,400] #index 0 = health / index 1 = damage / index 2 = speed
 var swordQ = false
 #Shop Button singals
 #it has to have a upgrade index and be in the cost array
+func _ready() -> void:
+	if Global.key2:
+		$TestShopUI/Purchases/fruits.hide()
+		$TestShopUI/Cost/fruits.hide()
 func _process(delta: float) -> void:
 	$Label.text = "Amount of money in pocket: " + str(Global.money)
 func _on_health_pressed() -> void:
 	var upgradeIndex := 0;
 	if canPurchase(upgradeIndex):
 		Global.health += 20
-		textbox.queue_text("Thanks for purchasing the sword!")
+		textbox.queue_text("Your blade's lookin' sharp!")
 		textbox.queue_text("I gotta warn you though... The values of swords depreciates by 10% each year.")
 		textbox.queue_text("If you try to sell it back to the shop in 2 years, how much gold will I buy it back for? (I'll give 40 gold for a correct answer)") #162
 		swordQ = true
@@ -36,10 +40,12 @@ func _on_damage_pressed() -> void:
 		sendToPlayer("damage")
 
 func _on_speed_pressed() -> void:
-	$TestShopUI/Purchases/fruits.hide()
-	$TestShopUI/Cost/fruits.hide()
 	var upgradeIndex := 2;
 	if canPurchase(upgradeIndex):
+		$TestShopUI/Purchases/fruits.hide()
+		$TestShopUI/Cost/fruits.hide()
+		Global.key2 = true
+		textbox.queue_text("Here's your key kid! You earned it!")
 		sendToPlayer("speed");
 
 #checks if the player can afford the upgrade

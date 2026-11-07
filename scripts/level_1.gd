@@ -13,13 +13,16 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if leave and textbox.text_queue.size() == 0 and textbox.current_text == "":
+	if leave:
 		get_tree().change_scene_to_file("res://scenes/town.tscn")
 
 func _on_area_2d_3_body_entered(body: CharacterBody2D) -> void:
 	if body.name == "player" and Global.flowersCollected == 2:
 		textbox.queue_text("Let's get outa here!")
-		leave = true
+		$Timer.start()
 	elif body.name == "player" and textbox.text_queue.size() == 0:
 		textbox.queue_text("I'm as ready as you are to get outa here but didn't you say you wanted to collect at least 2 lillies first?")
 			
+
+func _on_timer_timeout() -> void:
+	leave = true
