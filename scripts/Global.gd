@@ -2,8 +2,9 @@ extends Node
 
 var flowersCollected = 0
 var money = 100 #100
+var invested = 0
 var boatDebt = 0
-var hasHorse = false
+
 var hasBoat = false
 var hasFruits = false
 var employed = false
