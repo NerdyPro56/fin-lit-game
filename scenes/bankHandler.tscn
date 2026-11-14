@@ -119,10 +119,10 @@ text = "Return"
 [node name="LineEdit2" type="LineEdit" parent="TestShopUI" unique_id=1995889561]
 visible = false
 layout_mode = 0
-offset_left = 650.0
-offset_top = 355.7143
-offset_right = 1323.0
-offset_bottom = 512.7143
+offset_left = 188.57144
+offset_top = 170.00002
+offset_right = 861.5714
+offset_bottom = 327.0
 theme_override_font_sizes/font_size = 36
 placeholder_text = "Enter answer here"
 alignment = 1
@@ -131,10 +131,10 @@ virtual_keyboard_type = 2
 [node name="Button" type="Button" parent="TestShopUI" unique_id=284965120]
 visible = false
 layout_mode = 0
-offset_left = 1188.5714
-offset_top = 450.0
-offset_right = 1306.5714
-offset_bottom = 503.0
+offset_left = 727.1428
+offset_top = 264.2857
+offset_right = 845.1428
+offset_bottom = 317.2857
 theme_override_font_sizes/font_size = 32
 text = "Submit"
 
@@ -142,3 +142,4 @@ text = "Submit"
 [connection signal="button_down" from="TestShopUI/Purchases/withdraw" to="." method="_on_withdraw_pressed"]
 [connection signal="pressed" from="TestShopUI/Debug/giveMoneyPlz" to="." method="_on_give_money_plz_pressed"]
 [connection signal="pressed" from="TestShopUI/return" to="." method="_on_return_pressed"]
+[connection signal="pressed" from="TestShopUI/Button" to="." method="_on_button_pressed"]

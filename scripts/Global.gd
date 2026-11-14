@@ -27,6 +27,7 @@ var killed = 0
 var done1 = false
 
 var health = 100
+var damage = 20
 
 var key1 = false
 var key2 = false

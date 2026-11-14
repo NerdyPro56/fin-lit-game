@@ -21,6 +21,7 @@ var currentHealth: int = maxHealth
 var knockback = Vector2.ZERO
 var knockback_timer = 0.0
 func _ready() -> void:
+	Global.invested = int(Global.invested * (1.05))
 	if Global.hasBoat and Global.boatDebt > 0:
 		Global.money -= 50
 		Global.boatDebt -= 50
@@ -166,7 +167,7 @@ func _on_down_body_entered(body: CharacterBody2D) -> void:
 	$right/CollisionShape2D.disabled = true
 	$left/CollisionShape2D.disabled = true
 	if body.has_method("hurt"):
-		body.hurt(20)
+		body.hurt(Global.damage)
 
 
 func _on_up_body_entered(body: CharacterBody2D) -> void:
@@ -175,7 +176,7 @@ func _on_up_body_entered(body: CharacterBody2D) -> void:
 	$right/CollisionShape2D.disabled = true
 	$left/CollisionShape2D.disabled = true
 	if body.has_method("hurt"):
-		body.hurt(20)
+		body.hurt(Global.damage)
 
 func _on_right_body_entered(body: CharacterBody2D) -> void:
 	$down/CollisionShape2D.disabled = true
@@ -183,7 +184,7 @@ func _on_right_body_entered(body: CharacterBody2D) -> void:
 	$right/CollisionShape2D.disabled = true
 	$left/CollisionShape2D.disabled = true
 	if body.has_method("hurt"):
-		body.hurt(20)
+		body.hurt(Global.damage)
 
 func _on_left_body_entered(body: CharacterBody2D) -> void:
 	$down/CollisionShape2D.disabled = true
@@ -191,4 +192,4 @@ func _on_left_body_entered(body: CharacterBody2D) -> void:
 	$right/CollisionShape2D.disabled = true
 	$left/CollisionShape2D.disabled = true
 	if body.has_method("hurt"):
-		body.hurt(20)
+		body.hurt(Global.damage)

@@ -24,7 +24,7 @@ func _process(delta: float) -> void:
 func _on_health_pressed() -> void:
 	var upgradeIndex := 0;
 	if canPurchase(upgradeIndex):
-		Global.health += 20
+		Global.damage += 7
 		textbox.queue_text("Your blade's lookin' sharp!")
 		textbox.queue_text("I gotta warn you though... The values of swords depreciates by 10% each year.")
 		textbox.queue_text("If you try to sell it back to the shop in 2 years, how much gold will I buy it back for? (I'll give 40 gold for a correct answer)") #162
