@@ -46,6 +46,9 @@ func _ready() -> void:
 		$PointLight2D.scale.x = 0.4
 		$PointLight2D.scale.y = 0.4
 		print("mines")
+	if get_tree().current_scene.name == "wilderness":
+		print("wilderness")
+		$PointLight2D.visible = false
 	else:
 		$PointLight2D.scale.x = 0.25
 		$PointLight2D.scale.y = 0.25
@@ -54,6 +57,12 @@ func _ready() -> void:
 	camera_2d.limit_top = topLim
 	camera_2d.limit_bottom = botLim
 func _physics_process(delta: float) -> void:
+	if currentHealth <= 0:
+		if Global.money >= 200:
+			Global.money -= 200
+		else:
+			Global.money = 0
+		get_tree().reload_current_scene()
 	# reset velocity each frame
 	if !cutscene:
 		if knockback_timer > 0:

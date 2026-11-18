@@ -1,6 +1,6 @@
-[gd_scene load_steps=117 format=3 uid="uid://dhqewwrxv0v3b"]
+[gd_scene format=3 uid="uid://dhqewwrxv0v3b"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_cx51x"]
+[ext_resource type="Script" uid="uid://d0c8och2rk78h" path="res://scripts/player.gd" id="1_cx51x"]
 [ext_resource type="Texture2D" uid="uid://dao5fdrobn538" path="res://assets/temp-player-sprite/FREE_Adventurer 2D Pixel Art/Sprites/IDLE/idle_down.png" id="2_761f4"]
 [ext_resource type="Texture2D" uid="uid://d07pbdeywygar" path="res://assets/temp-player-sprite/FREE_Adventurer 2D Pixel Art/Sprites/ATTACK 1/attack1_down.png" id="2_q0ko4"]
 [ext_resource type="Texture2D" uid="uid://c5cwb3rlfm17g" path="res://assets/temp-player-sprite/FREE_Adventurer 2D Pixel Art/Sprites/ATTACK 1/attack1_left.png" id="3_gke46"]
@@ -426,7 +426,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2pcn1")
 }],
-"loop": false,
+"loop": 0,
 "name": &"attack1down",
 "speed": 10.0
 }, {
@@ -455,7 +455,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dfexs")
 }],
-"loop": false,
+"loop": 0,
 "name": &"attack1left",
 "speed": 10.0
 }, {
@@ -484,7 +484,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nw41n")
 }],
-"loop": false,
+"loop": 0,
 "name": &"attack1right",
 "speed": 10.0
 }, {
@@ -513,9 +513,14 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_h8nra")
 }],
-"loop": false,
+"loop": 0,
 "name": &"attack1up",
 "speed": 10.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"death",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -542,7 +547,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_c7gd0")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idledown",
 "speed": 10.0
 }, {
@@ -571,7 +576,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3xwoc")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idleleft",
 "speed": 10.0
 }, {
@@ -600,7 +605,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ku8mo")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idleright",
 "speed": 10.0
 }, {
@@ -629,7 +634,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pvi25")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idleup",
 "speed": 10.0
 }, {
@@ -658,7 +663,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dv1es")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walkdown",
 "speed": 10.0
 }, {
@@ -687,7 +692,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0omgq")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walkleft",
 "speed": 10.0
 }, {
@@ -716,7 +721,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_6lfp0")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walkright",
 "speed": 10.0
 }, {
@@ -745,7 +750,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2f5sl")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walkup",
 "speed": 10.0
 }]
@@ -765,66 +770,64 @@ size = Vector2(39, 31)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vi6nt"]
 size = Vector2(44, 25.5)
 
-[node name="player" type="CharacterBody2D"]
+[node name="player" type="CharacterBody2D" unique_id=1711060599]
 script = ExtResource("1_cx51x")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1339046242]
 light_mask = 2
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_orl8x")
-animation = &"attack1up"
-frame = 7
-frame_progress = 1.0
+animation = &"death"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=809982394]
 position = Vector2(-2, 7)
 shape = SubResource("RectangleShape2D_a7b3w")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1596017933]
 zoom = Vector2(2.5, 2.5)
 
-[node name="attack1time" type="Timer" parent="."]
+[node name="attack1time" type="Timer" parent="." unique_id=1624144917]
 wait_time = 0.6
 one_shot = true
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1179554448]
 scale = Vector2(0.25, 0.25)
 range_item_cull_mask = 3
 texture = ExtResource("14_a62mi")
 
-[node name="startTime" type="Timer" parent="."]
+[node name="startTime" type="Timer" parent="." unique_id=487011784]
 wait_time = 0.1
 one_shot = true
 
-[node name="down" type="Area2D" parent="."]
+[node name="down" type="Area2D" parent="." unique_id=967283864]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="down"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="down" unique_id=1547314241]
 position = Vector2(-3.5, 14)
 shape = SubResource("RectangleShape2D_sbu2e")
 disabled = true
 
-[node name="up" type="Area2D" parent="."]
+[node name="up" type="Area2D" parent="." unique_id=2085934343]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="up"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="up" unique_id=2036207507]
 position = Vector2(0.5, -12)
 shape = SubResource("RectangleShape2D_832x4")
 disabled = true
 
-[node name="right" type="Area2D" parent="."]
+[node name="right" type="Area2D" parent="." unique_id=1000667475]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="right"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="right" unique_id=1284026032]
 position = Vector2(18.5, -3.5)
 shape = SubResource("RectangleShape2D_hh4jr")
 disabled = true
 
-[node name="left" type="Area2D" parent="."]
+[node name="left" type="Area2D" parent="." unique_id=313680763]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="left"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="left" unique_id=1126231280]
 position = Vector2(-18, 5.75)
 shape = SubResource("RectangleShape2D_vi6nt")
 disabled = true
 
-[node name="stronk" type="Timer" parent="."]
+[node name="stronk" type="Timer" parent="." unique_id=75964676]
 wait_time = 0.6
 one_shot = true
 
